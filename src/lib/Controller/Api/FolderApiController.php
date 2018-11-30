@@ -132,7 +132,7 @@ class FolderApiController extends AbstractObjectApiController {
         bool $hidden = false,
         bool $favorite = false
     ): JSONResponse {
-        if($id === $this->modelService::BASE_FOLDER_UUID) throw new ApiException('Can not edit base folder', 422);
+        if($id === FolderService::BASE_FOLDER_UUID) throw new ApiException('Can not edit base folder', 422);
 
         $model = $this->modelService->findByUuid($id);
         /** @var FolderRevision $oldRevision */
@@ -163,7 +163,7 @@ class FolderApiController extends AbstractObjectApiController {
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
     public function delete(string $id): JSONResponse {
-        if($id === $this->modelService::BASE_FOLDER_UUID) {
+        if($id === FolderService::BASE_FOLDER_UUID) {
             throw new ApiException('Can not edit base folder', 422);
         }
 
@@ -185,7 +185,7 @@ class FolderApiController extends AbstractObjectApiController {
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
     public function restore(string $id, $revision = null): JSONResponse {
-        if($id === $this->modelService::BASE_FOLDER_UUID || $revision == $this->revisionService::BASE_REVISION_UUID) {
+        if($id === FolderService::BASE_FOLDER_UUID || $revision == FolderRevisionService::BASE_REVISION_UUID) {
             throw new ApiException('Can not edit base folder', 422);
         }
 
