@@ -204,7 +204,7 @@ class MailService {
      *
      * @return bool
      */
-    protected function sendMail(IUser $user, string $subject, string $title, string $body, ?array $button = null) {
+    protected function sendMail(IUser $user, string $subject, string $title, string $body, $button = null) {
         if($user->getEMailAddress() === null) return false;
         $template = $this->mailer->createEMailTemplate('passwords.EMail');
 

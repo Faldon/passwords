@@ -122,7 +122,7 @@ abstract class AbstractObjectHelper {
         EntityInterface $model,
         string $level = self::LEVEL_MODEL,
         $filter = []
-    ): ?array;
+    );
 
     /**
      * @param $value
