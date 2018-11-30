@@ -46,7 +46,7 @@ class LocalFaviconHelper extends AbstractFaviconHelper {
      *
      * @return null|string
      */
-    protected function getFaviconFromSourceCode(string $domain, ?string $html) {
+    protected function getFaviconFromSourceCode(string $domain, $html) {
         if(!empty($html)) {
             $patterns = $this->getSearchPatterns();
             foreach($patterns as $pattern) {
