@@ -97,7 +97,10 @@ abstract class AbstractModelRepair {
                     $model->setRevision($latestRevision->getUuid());
                     $fixed = true;
                 }
-            } catch(DoesNotExistException | MultipleObjectsReturnedException $e) {
+            } catch(DoesNotExistException $e) {
+                $model->setRevision($latestRevision->getUuid());
+                $fixed = true;
+            } catch(MultipleObjectsReturnedException $e) {
                 $model->setRevision($latestRevision->getUuid());
                 $fixed = true;
             }
