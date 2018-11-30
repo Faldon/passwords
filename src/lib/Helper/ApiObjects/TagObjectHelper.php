@@ -79,7 +79,7 @@ class TagObjectHelper extends AbstractObjectHelper {
         EntityInterface $tag,
         string $level = self::LEVEL_MODEL,
         $filter = []
-    ): ?array {
+    ) {
         /** @var TagRevision $revision */
         $revision = $this->getRevision($tag, $filter);
         if($revision === null) return null;

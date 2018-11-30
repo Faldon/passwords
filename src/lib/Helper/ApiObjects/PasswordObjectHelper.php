@@ -99,7 +99,7 @@ class PasswordObjectHelper extends AbstractObjectHelper {
         EntityInterface $password,
         string $level = self::LEVEL_MODEL,
         $filter = []
-    ): ?array {
+    ) {
         /** @var PasswordRevision $revision */
         $revision = $this->getRevision($password, $filter);
         if($revision === null) return null;

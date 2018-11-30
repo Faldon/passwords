@@ -154,7 +154,7 @@ abstract class AbstractMapper extends Mapper {
      * @return null|EntityInterface
      * @throws \Exception
      */
-    public function findOneMatching(array $search): ?EntityInterface {
+    public function findOneMatching(array $search) {
         $matches = $this->findMatching($search, 1);
 
         if(isset($matches[0])) {

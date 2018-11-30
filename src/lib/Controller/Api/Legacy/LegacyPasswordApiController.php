@@ -262,7 +262,7 @@ class LegacyPasswordApiController extends ApiController {
      * @return array|null
      * @throws \Exception
      */
-    protected function getPasswordObject(Password $password): ?array {
+    protected function getPasswordObject(Password $password) {
         /** @var PasswordRevision $revision */
         $revision = $this->passwordRevisionService->findByUuid($password->getRevision(), true);
 
@@ -315,7 +315,7 @@ class LegacyPasswordApiController extends ApiController {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function findCategoryForPassword(Password $password): ?Tag {
+    protected function findCategoryForPassword(Password $password) {
         $tags = $this->tagService->findByPassword($password->getUuid());
 
         foreach($tags as $tag) {

@@ -60,7 +60,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
      * @throws \Exception
      * @throws \Throwable
      */
-    protected function getFaviconData(string $domain): ?string {
+    protected function getFaviconData(string $domain) {
         $json = $this->sendApiRequest($domain);
         $icon = $this->analyzeApiResponse($json, $domain);
 
@@ -72,7 +72,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
      *
      * @return array
      */
-    protected function sendApiRequest(string $domain): ?array {
+    protected function sendApiRequest(string $domain) {
         $this->checkRequestTimeout();
         $request = new RequestHelper();
         $data    = $request
@@ -94,7 +94,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
      * @return null|string
      * @throws \Exception
      */
-    protected function analyzeApiResponse(array $json, string $domain): ?string {
+    protected function analyzeApiResponse(array $json, string $domain) {
         if(isset($json['error'])) throw new \Exception("Favicongrabber said: {$json['error']} ({$domain})");
 
         $iconData   = null;
@@ -141,7 +141,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
      *
      * @return null|string
      */
-    protected function loadIcon(string $url, string $data = null): ?string {
+    protected function loadIcon(string $url, string $data = null) {
         $request = new RequestHelper();
         $request->setUrl($url);
         $iconData = $request->sendWithRetry();

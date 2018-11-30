@@ -66,7 +66,7 @@ abstract class AbstractFaviconHelper {
      * @return ISimpleFile|null
      * @throws \Exception
      */
-    public function getFavicon(string $domain): ?ISimpleFile {
+    public function getFavicon(string $domain) {
         $faviconFile = $this->getFaviconFilename($domain);
 
         if($this->fileCacheService->hasFile($faviconFile)) {
@@ -87,7 +87,7 @@ abstract class AbstractFaviconHelper {
      * @return ISimpleFile|null
      * @throws \Throwable
      */
-    public function getDefaultFavicon(string $domain, int $size = 256): ?ISimpleFile {
+    public function getDefaultFavicon(string $domain, int $size = 256) {
         $fileName = $this->getFaviconFilename($domain);
         if($this->fileCacheService->hasFile($fileName)) {
             return $this->fileCacheService->getFile($fileName);
@@ -118,7 +118,7 @@ abstract class AbstractFaviconHelper {
      *
      * @return string|null
      */
-    protected function getHttpRequest(string $url): ?string {
+    protected function getHttpRequest(string $url) {
         $request = new RequestHelper();
         $request->setUrl($url);
 
@@ -130,7 +130,7 @@ abstract class AbstractFaviconHelper {
      *
      * @return null|string
      */
-    protected function getFaviconData(string $domain): ?string {
+    protected function getFaviconData(string $domain) {
         $url = $this->getFaviconUrl($domain);
 
         return $this->getHttpRequest($url);

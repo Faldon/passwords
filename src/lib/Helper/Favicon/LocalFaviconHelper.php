@@ -46,7 +46,7 @@ class LocalFaviconHelper extends AbstractFaviconHelper {
      *
      * @return null|string
      */
-    protected function getFaviconFromSourceCode(string $domain, ?string $html): ?string {
+    protected function getFaviconFromSourceCode(string $domain, ?string $html) {
         if(!empty($html)) {
             $patterns = $this->getSearchPatterns();
             foreach($patterns as $pattern) {
@@ -65,7 +65,7 @@ class LocalFaviconHelper extends AbstractFaviconHelper {
      *
      * @return mixed|null|string
      */
-    protected function tryDefaultIconPaths(string $domain, $url): ?string {
+    protected function tryDefaultIconPaths(string $domain, $url) {
         list($data, , , $isIcon) = $this->getUrl("http://{$domain}/favicon.png");
         if($isIcon && $data) return $data;
 
@@ -111,7 +111,7 @@ class LocalFaviconHelper extends AbstractFaviconHelper {
      *
      * @return null|string
      */
-    protected function checkForImage(string $htmlSource, string $htmlPattern, string $tagPattern, string $domain): ?string {
+    protected function checkForImage(string $htmlSource, string $htmlPattern, string $tagPattern, string $domain) {
 
         if(preg_match_all($htmlPattern, $htmlSource, $htmlMatches)) {
             foreach($htmlMatches[1] as $tagSource) {

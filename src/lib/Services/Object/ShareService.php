@@ -70,7 +70,7 @@ class ShareService extends AbstractService {
      *
      * @throws \Exception
      */
-    public function findByTargetPassword(string $passwordUuid): ?Share {
+    public function findByTargetPassword(string $passwordUuid) {
         return $this->mapper->findOneMatching(['target_password', $passwordUuid]);
     }
 
@@ -100,7 +100,7 @@ class ShareService extends AbstractService {
      *
      * @throws \Exception
      */
-    public function findBySourcePasswordAndReceiver(string $passwordUuid, string $userId): ?Share {
+    public function findBySourcePasswordAndReceiver(string $passwordUuid, string $userId) {
         return $this->mapper->findOneMatching([['source_password', $passwordUuid], ['receiver', $userId]]);
     }
 

@@ -104,7 +104,7 @@ abstract class AbstractObjectHelper {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function getRevision(ModelInterface $model, array $filters): ?RevisionInterface {
+    protected function getRevision(ModelInterface $model, array $filters) {
         $revision = $this->revisionService->findByUuid($model->getRevision());
         if(!$this->filter($revision, $filters)) return null;
 

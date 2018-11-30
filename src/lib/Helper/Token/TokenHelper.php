@@ -235,7 +235,7 @@ class TokenHelper {
     /**
      * @return null|string
      */
-    protected function getUserPassword(): ?string {
+    protected function getUserPassword() {
         try {
             $sessionId    = $this->session->getId();
             $sessionToken = $this->tokenProvider->getToken($sessionId);

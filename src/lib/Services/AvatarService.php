@@ -67,7 +67,7 @@ class AvatarService {
      * @return null|\OCP\Files\SimpleFS\ISimpleFile
      * @throws \Throwable
      */
-    public function getAvatar(string $userId, int $size = 32): ?ISimpleFile {
+    public function getAvatar(string $userId, int $size = 32) {
         $size = $this->validateSize($size);
 
         $fileName = "{$userId}_{$size}.png";
