@@ -81,7 +81,7 @@ class ShareService extends AbstractService {
      *
      * @throws \Exception
      */
-    public function findByTargetPassword(string $passwordUuid): ?Share {
+    public function findByTargetPassword(string $passwordUuid): Share {
         return $this->mapper->findOneByField('target_password', $passwordUuid);
     }
 
@@ -115,7 +115,7 @@ class ShareService extends AbstractService {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function findBySourcePasswordAndReceiver(string $passwordUuid, string $userId): ?Share {
+    public function findBySourcePasswordAndReceiver(string $passwordUuid, string $userId): Share {
         return $this->mapper->findOneByFields(
             ['source_password', $passwordUuid],
             ['receiver', $userId]

@@ -112,7 +112,7 @@ class FaviconService {
      * @throws \OCP\Files\NotFoundException
      * @throws \OCP\Files\NotPermittedException
      */
-    protected function resizeFavicon(ISimpleFile $favicon, string $fileName, int $size): ?ISimpleFile {
+    protected function resizeFavicon(ISimpleFile $favicon, string $fileName, int $size) {
         $faviconData = $favicon->getContent();
         $imageHelper = $this->helperService->getImageHelper();
         if($imageHelper->supportsImage($faviconData)) {

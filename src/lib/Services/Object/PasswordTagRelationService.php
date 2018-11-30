@@ -80,7 +80,7 @@ class PasswordTagRelationService extends AbstractService {
      * @return PasswordTagRelation|EntityInterface|null
      * @throws \Exception
      */
-    public function findByTagAndPassword(string $tagUuid, string $passwordUuid): ?PasswordTagRelation {
+    public function findByTagAndPassword(string $tagUuid, string $passwordUuid): PasswordTagRelation {
         return $this->mapper->findOneByFields(
             ['password', $passwordUuid],
             ['tag', $tagUuid]

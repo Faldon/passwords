@@ -82,7 +82,7 @@ abstract class AbstractPreviewHelper {
      * @return ISimpleFile|null
      * @throws \Exception
      */
-    function getPreview(string $domain, string $view): ?ISimpleFile {
+    function getPreview(string $domain, string $view) {
         $previewFile = $this->getPreviewFilename($domain, $view);
 
         if($this->fileCacheService->hasFile($previewFile)) {
@@ -101,7 +101,7 @@ abstract class AbstractPreviewHelper {
      *
      * @return ISimpleFile|null
      */
-    public function getDefaultPreview(string $domain): ?ISimpleFile {
+    public function getDefaultPreview(string $domain) {
         $number = array_sum(str_split(dechex(crc32($domain)), 2));
         while($number >= 5) {
             $number -= 5;

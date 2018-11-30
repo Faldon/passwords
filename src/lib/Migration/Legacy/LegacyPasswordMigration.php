@@ -205,7 +205,7 @@ class LegacyPasswordMigration {
      *
      * @return string
      */
-    protected function getUrl(stdClass $properties, LegacyPassword $password): ?string {
+    protected function getUrl(stdClass $properties, LegacyPassword $password) {
         $url = $properties->address;
         if(empty($url) && !empty($password->getWebsite())) {
             $url = 'http://'.$password->getWebsite();

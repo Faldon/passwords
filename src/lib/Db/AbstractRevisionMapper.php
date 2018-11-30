@@ -25,7 +25,7 @@ abstract class AbstractRevisionMapper extends AbstractMapper {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function findCurrentRevisionByModel(string $modelUuid): ?RevisionInterface {
+    public function findCurrentRevisionByModel(string $modelUuid): RevisionInterface {
         $sql = $this->getJoinStatement(static::MODEL_TABLE_NAME, 'model');
 
         $sql->andWhere(

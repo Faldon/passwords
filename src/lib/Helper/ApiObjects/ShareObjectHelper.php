@@ -88,7 +88,7 @@ class ShareObjectHelper extends AbstractObjectHelper {
         EntityInterface $share,
         string $level = self::LEVEL_MODEL,
         $filter = []
-    ): ?array {
+    ) {
 
         if(!$this->filter($share, $filter)) return null;
 

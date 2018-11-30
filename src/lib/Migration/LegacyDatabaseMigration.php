@@ -70,7 +70,7 @@ class LegacyDatabaseMigration implements IRepairStep {
      * @throws \Exception in case of failure
      * @since 9.1.0
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         $version = $this->configurationService->getAppValue('installed_version');
 
         if(version_compare($version, '2018.0.0') < 0) {

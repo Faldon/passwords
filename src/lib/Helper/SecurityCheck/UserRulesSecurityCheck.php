@@ -45,7 +45,7 @@ class UserRulesSecurityCheck {
      * @return array
      * @throws \Exception
      */
-    public function getRevisionSecurityLevel(PasswordRevision $revision): ?array {
+    public function getRevisionSecurityLevel(PasswordRevision $revision) {
         $maxAgeInDays = $this->userSettingsHelper->get('password/security/age', $revision->getUserId());
         if($maxAgeInDays > 0 && time() - $maxAgeInDays * 86400 > $revision->getEdited()) {
             return [AbstractSecurityCheckHelper::LEVEL_WEAK, AbstractSecurityCheckHelper::STATUS_OUTDATED];

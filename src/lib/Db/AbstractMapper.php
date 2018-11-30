@@ -173,7 +173,7 @@ abstract class AbstractMapper extends QBMapper {
      * @return array|Entity[]
      * @throws \Exception
      */
-    public function findAllByFields(array ...$fields): array {
+    public function findAllByFields($fields): array {
         $sql = $this->buildQuery($fields);
 
         return $this->findEntities($sql);

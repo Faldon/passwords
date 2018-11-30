@@ -72,7 +72,7 @@ abstract class AbstractModelService extends AbstractService {
      * @deprecated
      * @throws MultipleObjectsReturnedException
      */
-    public function findByIdOrUuid($search): ?ModelInterface {
+    public function findByIdOrUuid($search): ModelInterface {
         try {
             return $this->mapper->findOneByIdOrUuid($search);
         } catch(DoesNotExistException $e) {

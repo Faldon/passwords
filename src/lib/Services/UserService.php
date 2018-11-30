@@ -64,7 +64,7 @@ class UserService {
      *
      * @return null|IUser
      */
-    public function getUser(string $uid): ?IUser {
+    public function getUser(string $uid) {
         return $this->userManager->get($uid);
     }
 }

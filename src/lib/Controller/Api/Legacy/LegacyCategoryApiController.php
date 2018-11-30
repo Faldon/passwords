@@ -170,7 +170,7 @@ class LegacyCategoryApiController extends ApiController {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function getCategoryObject(Tag $tag): ?array {
+    protected function getCategoryObject(Tag $tag) {
         /** @var TagRevision $revision */
         $revision = $this->tagRevisionService->findByUuid($tag->getRevision(), true);
 
