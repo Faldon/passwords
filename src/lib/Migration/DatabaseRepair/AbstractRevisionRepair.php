@@ -86,7 +86,10 @@ abstract class AbstractRevisionRepair {
 
         try {
             $this->modelMapper->findByUuid($revision->getModel());
-        } catch(DoesNotExistException | MultipleObjectsReturnedException $e) {
+        } catch(DoesNotExistException $e) {
+            $revision->setDeleted(true);
+            $fixed = true;
+        } catch(MultipleObjectsReturnedException $e) {
             $revision->setDeleted(true);
             $fixed = true;
         }

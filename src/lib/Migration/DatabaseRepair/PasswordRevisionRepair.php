@@ -82,7 +82,10 @@ class PasswordRevisionRepair extends AbstractRevisionRepair {
         if($revision->getFolder() !== FolderService::BASE_FOLDER_UUID) {
             try {
                 $this->folderMapper->findByUuid($revision->getFolder());
-            } catch(DoesNotExistException | MultipleObjectsReturnedException $e) {
+            } catch(DoesNotExistException $e) {
+                $revision->setFolder(FolderService::BASE_FOLDER_UUID);
+                $fixed = true;
+            } catch(MultipleObjectsReturnedException $e) {
                 $revision->setFolder(FolderService::BASE_FOLDER_UUID);
                 $fixed = true;
             }
