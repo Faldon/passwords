@@ -116,7 +116,7 @@ class CreatePasswordShareHelper {
      * @return int|null
      * @throws ApiException
      */
-    protected function checkExpires(?int $expires) {
+    protected function checkExpires($expires) {
         if(empty($expires)) $expires = null;
         if($expires !== null && $expires < time()) throw new ApiException('Invalid expiration date', 400);
 

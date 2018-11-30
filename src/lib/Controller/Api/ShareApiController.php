@@ -73,7 +73,7 @@ class ShareApiController extends AbstractApiController {
      * @param CreatePasswordShareHelper $createPasswordShare
      */
     public function __construct(
-        ?string $userId,
+        $userId,
         IRequest $request,
         ShareService $modelService,
         ShareObjectHelper $objectHelper,

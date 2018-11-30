@@ -209,7 +209,7 @@ class ShareService extends AbstractService {
         string $receiverId,
         string $type,
         bool $editable,
-        ?int $expires,
+        $expires,
         bool $shareable
     ): Share {
 

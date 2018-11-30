@@ -179,7 +179,7 @@ class RestoreBackupHelper {
     /**
      * @param null|string $user
      */
-    protected function deleteData(?string $user) {
+    protected function deleteData($user) {
         $this->deleteEntities($this->passwordMapper, $user);
         $this->deleteEntities($this->passwordRevisionMapper, $user);
         $this->deleteEntities($this->folderMapper, $user);
@@ -196,7 +196,7 @@ class RestoreBackupHelper {
      *
      * @throws \Exception
      */
-    protected function restoreKeys(array $keys, ?string $user) {
+    protected function restoreKeys(array $keys, $user) {
         $sseV1ServerKey = $this->config->getAppValue('SSEv1ServerKey', null);
         if($sseV1ServerKey !== $keys['server']['SSEv1ServerKey']) {
             if($user !== null && $sseV1ServerKey !== null) {
@@ -220,7 +220,7 @@ class RestoreBackupHelper {
      * @param array       $data
      * @param null|string $user
      */
-    protected function restoreData(array $data, ?string $user) {
+    protected function restoreData(array $data, $user) {
         $this->restoreModels($data['passwords'], $this->passwordMapper, $this->passwordRevisionMapper, Password::class, PasswordRevision::class, $user);
         $this->restoreModels($data['folders'], $this->folderMapper, $this->folderRevisionMapper, Folder::class, FolderRevision::class, $user);
         $this->restoreModels($data['tags'], $this->tagMapper, $this->tagRevisionMapper, Tag::class, TagRevision::class, $user);
@@ -236,7 +236,7 @@ class RestoreBackupHelper {
      * @param string                 $revisionClass
      * @param null|string            $user
      */
-    protected function restoreModels(array $models, AbstractMapper $modelMapper, AbstractRevisionMapper $revisionMapper, string $modelClass, string $revisionClass, ?string $user) {
+    protected function restoreModels(array $models, AbstractMapper $modelMapper, AbstractRevisionMapper $revisionMapper, string $modelClass, string $revisionClass, $user) {
         foreach($models as $model) {
             if($user !== null && $user !== $model['userId']) continue;
             $revisions = $model['revisions'];
@@ -253,7 +253,7 @@ class RestoreBackupHelper {
      * @param string         $class
      * @param null|string    $user
      */
-    protected function restoreEntities(array $entities, AbstractMapper $entityMapper, string $class, ?string $user) {
+    protected function restoreEntities(array $entities, AbstractMapper $entityMapper, string $class, $user) {
         foreach($entities as $entity) {
             if($user !== null && $user !== $entity['userId']) continue;
             $this->createAndSaveObject($entity, $entityMapper, $class);
@@ -279,7 +279,7 @@ class RestoreBackupHelper {
      * @param AbstractMapper $entityMapper
      * @param null|string    $user
      */
-    protected function deleteEntities(AbstractMapper $entityMapper, ?string $user) {
+    protected function deleteEntities(AbstractMapper $entityMapper, $user) {
         $entities = $entityMapper->findAll();
         foreach($entities as $entity) {
             if($user !== null && $user !== $entity->getUserId()) continue;
@@ -293,7 +293,7 @@ class RestoreBackupHelper {
      *
      * @throws \Exception
      */
-    protected function restoreUserSettings($userSettings, ?string $user) {
+    protected function restoreUserSettings($userSettings, $user) {
         foreach($userSettings as $uid => $settings) {
             if($user !== null && $user !== $uid) continue;
 
@@ -313,7 +313,7 @@ class RestoreBackupHelper {
      *
      * @throws \Exception
      */
-    protected function restoreClientSettings($clientSettings, ?string $user) {
+    protected function restoreClientSettings($clientSettings, $user) {
         foreach($clientSettings as $uid => $value) {
             if($user !== null && $user !== $uid) continue;
 

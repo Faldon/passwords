@@ -131,7 +131,7 @@ class ServiceApiController extends AbstractApiController {
      * @return JSONResponse
      * @throws ApiException
      */
-    public function generatePassword(?int $strength = null, ?bool $numbers = null, ?bool $special = null): JSONResponse {
+    public function generatePassword($strength = null, $numbers = null, $special = null): JSONResponse {
         if($strength === null) $strength = $this->userSettings->get('password.generator.strength');
         if($numbers === null) $numbers = $this->userSettings->get('password.generator.numbers');
         if($special === null) $special = $this->userSettings->get('password.generator.special');
