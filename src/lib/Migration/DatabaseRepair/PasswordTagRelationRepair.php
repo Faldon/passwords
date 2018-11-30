@@ -93,7 +93,10 @@ class PasswordTagRelationRepair {
                 $relation->setDeleted(true);
                 $fixed = true;
             }
-        } catch(DoesNotExistException | MultipleObjectsReturnedException $e) {
+        } catch(DoesNotExistException $e) {
+            $relation->setDeleted(true);
+            $fixed = true;
+        } catch(MultipleObjectsReturnedException $e) {
             $relation->setDeleted(true);
             $fixed = true;
         }
