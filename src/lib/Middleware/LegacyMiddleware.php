@@ -45,7 +45,7 @@ class LegacyMiddleware extends Middleware {
      * @param \OCP\AppFramework\Controller $controller
      * @param string                       $methodName
      */
-    public function beforeController($controller, $methodName): void {
+    public function beforeController($controller, $methodName) {
 
         if(in_array(get_class($controller), $this->legacyControllers)) {
             $this->config->setAppValue('legacy_last_used', time());

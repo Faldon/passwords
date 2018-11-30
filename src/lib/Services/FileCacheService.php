@@ -135,7 +135,7 @@ class FileCacheService {
     /**
      * @param string $cache
      */
-    public function clearCache(string $cache = null): void {
+    public function clearCache(string $cache = null) {
         try {
             $cache = $this->validateCacheName($cache);
             $this->getCache($cache)->delete();
@@ -242,7 +242,7 @@ class FileCacheService {
      * @param string $file
      * @param string $cache
      */
-    public function removeFile(string $file, string $cache = null): void {
+    public function removeFile(string $file, string $cache = null) {
         try {
             $cache = $this->validateCacheName($cache);
 

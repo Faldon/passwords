@@ -41,7 +41,7 @@ class HookManager extends BasicEmitter {
      * @param string $method
      * @param array  $arguments
      */
-    public function emit($scope, $method, array $arguments = []): void {
+    public function emit($scope, $method, array $arguments = []) {
         parent::emit($scope, $method, $arguments);
     }
 
@@ -51,7 +51,7 @@ class HookManager extends BasicEmitter {
      *
      * @throws \Exception
      */
-    public function __call($name, $arguments): void {
+    public function __call($name, $arguments) {
         preg_match("/([a-z]+)([a-zA-Z]+)/", $name, $matches);
         $scope = $matches[1];
         $method = lcfirst($matches[2]);

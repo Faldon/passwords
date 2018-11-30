@@ -102,7 +102,7 @@ class DatabaseObjectRepair implements IRepairStep {
      * @throws \Exception in case of failure
      * @since 9.1.0
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         $this->tagRevisionRepair->run($output);
         $this->folderRevisionRepair->run($output);
         $this->passwordRevisionRepair->run($output);

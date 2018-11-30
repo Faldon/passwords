@@ -113,7 +113,7 @@ abstract class AbstractModelService extends AbstractService {
      *
      * @throws \Exception
      */
-    public function setRevision(ModelInterface $model, RevisionInterface $revision): void {
+    public function setRevision(ModelInterface $model, RevisionInterface $revision) {
         if($revision->getModel() === $model->getUuid()) {
             $this->hookManager->emit($this->class, 'preSetRevision', [$model, $revision]);
             $model->setRevision($revision->getUuid());

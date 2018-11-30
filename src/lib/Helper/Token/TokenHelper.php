@@ -153,7 +153,7 @@ class TokenHelper {
     /**
      * @param string $tokenId
      */
-    public function destroyToken(string $tokenId): void {
+    public function destroyToken(string $tokenId) {
         // @TODO remove this for 2019.1.0
         if($this->getServerVersion() === '14') {
             $this->tokenProvider->invalidateTokenById(
@@ -171,7 +171,7 @@ class TokenHelper {
     /**
      * @throws \Exception
      */
-    protected function destroyLegacyToken(): void {
+    protected function destroyLegacyToken() {
         $tokenId = $this->config->getUserValue(self::WEBUI_TOKEN_ID, false);
         if($tokenId !== false) {
             $this->destroyToken($tokenId);
@@ -183,7 +183,7 @@ class TokenHelper {
     /**
      *
      */
-    public function destroyWebUiToken(): void {
+    public function destroyWebUiToken() {
         $tokenId = $this->session->get(self::WEBUI_TOKEN_ID);
         if(!empty($tokenId)) {
             $this->destroyToken($tokenId);

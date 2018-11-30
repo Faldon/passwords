@@ -44,7 +44,7 @@ class CheckNightlyUpdates extends AbstractCronJob {
      *
      * @throws \Exception
      */
-    protected function runJob($argument): void {
+    protected function runJob($argument) {
         $enabled = $this->config->getAppValue('nightly/enabled', false) === '1';
         $enabled = $this->migrateNightlyKey($enabled);
 

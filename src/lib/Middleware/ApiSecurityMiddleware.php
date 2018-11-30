@@ -57,7 +57,7 @@ class ApiSecurityMiddleware extends Middleware {
      *
      * @throws ApiException
      */
-    public function beforeController($controller, $methodName): void {
+    public function beforeController($controller, $methodName) {
 
         if($this->isApiClass($controller) && $this->request->getServerProtocol() !== 'https') {
             throw new ApiException('HTTPS required', 400);

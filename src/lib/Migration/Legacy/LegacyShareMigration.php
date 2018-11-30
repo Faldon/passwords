@@ -68,7 +68,7 @@ class LegacyShareMigration {
      * @param IOutput $output
      * @param array   $passwords
      */
-    public function migratePasswords(IOutput $output, array $passwords): void {
+    public function migratePasswords(IOutput $output, array $passwords) {
         $shares = $this->shareMapper->findAll();
 
         $count = count($shares);
@@ -96,7 +96,7 @@ class LegacyShareMigration {
      * @throws DoesNotExistException
      * @throws MultipleObjectsReturnedException
      */
-    protected function migrateShare(LegacyShare $share, string $passwordId): void {
+    protected function migrateShare(LegacyShare $share, string $passwordId) {
         if($this->userManager->get($share->getSharedto()) === null) return;
 
         /** @var Password $password */

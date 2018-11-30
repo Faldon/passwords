@@ -55,7 +55,7 @@ class PasswordTagRelationRepair {
      *
      * @throws \Exception
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         /** @var PasswordTagRelation[] $allRelations */
         $allRelations = $this->relationService->findAll();
 

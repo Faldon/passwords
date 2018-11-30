@@ -78,7 +78,7 @@ class NotificationService implements INotifier {
      * @param string $userId
      * @param int    $passwords
      */
-    public function sendBadPasswordNotification(string $userId, int $passwords): void {
+    public function sendBadPasswordNotification(string $userId, int $passwords) {
         if(!$this->settings->get('user.notification.security', $userId)) return;
 
         $notification
@@ -92,7 +92,7 @@ class NotificationService implements INotifier {
      * @param string $receiverId
      * @param array  $owners
      */
-    public function sendShareCreateNotification(string $receiverId, array $owners): void {
+    public function sendShareCreateNotification(string $receiverId, array $owners) {
         if(!$this->settings->get('user.notification.shares', $receiverId)) return;
 
         $notification
@@ -106,7 +106,7 @@ class NotificationService implements INotifier {
      * @param string $userId
      * @param int    $passwords
      */
-    public function sendShareLoopNotification(string $userId, int $passwords): void {
+    public function sendShareLoopNotification(string $userId, int $passwords) {
         if(!$this->settings->get('user.notification.errors', $userId)) return;
 
         $notification

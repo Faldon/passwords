@@ -156,7 +156,7 @@ class EnvironmentService {
     /**
      * @param IRequest $request
      */
-    protected function checkIfCronJob(IRequest $request): void {
+    protected function checkIfCronJob(IRequest $request) {
         $requestUri = $request->getRequestUri();
         $cronType   = $this->getBackgroundJobType();
 
@@ -168,7 +168,7 @@ class EnvironmentService {
     /**
      * @param IRequest $request
      */
-    protected function checkIfAppUpdate(IRequest $request): void {
+    protected function checkIfAppUpdate(IRequest $request) {
         $this->isAppUpdate = false;
         if($this->isCronJob || $this->isCliMode) return;
 

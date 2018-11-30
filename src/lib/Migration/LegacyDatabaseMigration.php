@@ -83,7 +83,7 @@ class LegacyDatabaseMigration implements /*IMigrationStep,*/ IRepairStep {
      * @throws \Exception in case of failure
      * @since 9.1.0
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         $version = $this->configurationService->getAppValue('installed_version');
 
         if(version_compare($version, '2018.0.0') < 0) {
@@ -107,7 +107,7 @@ class LegacyDatabaseMigration implements /*IMigrationStep,*/ IRepairStep {
      * @since 13.0.0
      * @throws \Exception
      */
-    public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options): void {
+    public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
         $this->run($output);
     }
 
@@ -118,7 +118,7 @@ class LegacyDatabaseMigration implements /*IMigrationStep,*/ IRepairStep {
      *
      * @since 13.0.0
      */
-    public function preSchemaChange(IOutput $output, \Closure $schemaClosure, array $options): void {}
+    public function preSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {}
 
     /**
      * @param IOutput  $output

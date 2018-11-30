@@ -86,7 +86,7 @@ class PasswordHook {
      * @throws \Exception
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function preSetRevision(Password $password, PasswordRevision $newRevision): void {
+    public function preSetRevision(Password $password, PasswordRevision $newRevision) {
         if($password->getRevision() === null) {
             $this->checkSecurityStatus($newRevision);
             $this->revisionService->save($newRevision);
@@ -120,7 +120,7 @@ class PasswordHook {
      *
      * @throws \Exception
      */
-    public function preDelete(Password $password): void {
+    public function preDelete(Password $password) {
         $relations = $this->relationService->findByPassword($password->getUuid());
 
         foreach($relations as $relation) {
@@ -141,7 +141,7 @@ class PasswordHook {
      *
      * @throws \Exception
      */
-    public function postDelete(Password $password): void {
+    public function postDelete(Password $password) {
         /** @var PasswordRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($password->getUuid());
 
@@ -161,7 +161,7 @@ class PasswordHook {
      *
      * @throws \Exception
      */
-    public function postClone(Password $originalPassword, Password $clonedPassword): void {
+    public function postClone(Password $originalPassword, Password $clonedPassword) {
         /** @var PasswordRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($originalPassword->getUuid());
 
@@ -192,7 +192,7 @@ class PasswordHook {
      *
      * @throws \Exception
      */
-    protected function updateShares(Password $password): void {
+    protected function updateShares(Password $password) {
         if($password->getShareId()) {
             $share = $this->shareService->findByTargetPassword($password->getUuid());
             $share->setTargetUpdated(true);
@@ -211,7 +211,7 @@ class PasswordHook {
     /**
      * @param PasswordRevision $newRevision
      */
-    protected function checkSecurityStatus(PasswordRevision $newRevision): void {
+    protected function checkSecurityStatus(PasswordRevision $newRevision) {
         $securityCheck = $this->helperService->getSecurityHelper();
         list($status, $statusCode) = $securityCheck->getRevisionSecurityLevel($newRevision);
         $newRevision->setStatus($status);
@@ -224,7 +224,7 @@ class PasswordHook {
      *
      * @throws \Exception
      */
-    protected function updateRelations(Password $password, PasswordRevision $newRevision): void {
+    protected function updateRelations(Password $password, PasswordRevision $newRevision) {
         $relations = $this->relationService->findByPassword($password->getUuid());
 
         foreach($relations as $relation) {

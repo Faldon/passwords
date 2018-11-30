@@ -26,7 +26,7 @@ class SmallLocalDbSecurityCheckHelper extends BigLocalDbSecurityCheckHelper {
      *
      * @throws Exception
      */
-    protected function downloadPasswordsFile(string $txtFile): void {
+    protected function downloadPasswordsFile(string $txtFile) {
         $request = new FileDownloadHelper();
         $success = $request
             ->setOutputFile($txtFile)
