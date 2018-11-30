@@ -100,7 +100,7 @@ class NightlyAppFetcher extends Fetcher {
     /**
      *
      */
-    public function clearDb(): void {
+    public function clearDb() {
         try {
             $this->config->deleteAppValue('passwords', 'nightly/etag');
             $rootFolder = $this->appData->getFolder('/');
@@ -204,7 +204,7 @@ class NightlyAppFetcher extends Fetcher {
     /**
      * @param $nightlyEtag
      */
-    protected function updateAppDbAfterUpdate($nightlyEtag): void {
+    protected function updateAppDbAfterUpdate($nightlyEtag) {
         try {
             $appEtag    = $this->config->getAppValue('passwords', 'nightly/etag', '');
             $rootFolder = $this->appData->getFolder('/');

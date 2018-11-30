@@ -70,7 +70,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function preSetRevision(Folder $folder, FolderRevision $revision): void {
+    public function preSetRevision(Folder $folder, FolderRevision $revision) {
         if($folder->getRevision() === null) return;
 
         $oldRevision = $this->revisionService->findByUuid($folder->getRevision());
@@ -92,7 +92,7 @@ class FolderHook {
      *
      * @throws \Exception
      */
-    public function preDelete(Folder $folder): void {
+    public function preDelete(Folder $folder) {
         $folders = $this->folderService->findByParent($folder->getUuid());
         foreach($folders as $subFolder) {
             $this->folderService->delete($subFolder);
@@ -109,7 +109,7 @@ class FolderHook {
      *
      * @throws \Exception
      */
-    public function postDelete(Folder $folder): void {
+    public function postDelete(Folder $folder) {
         /** @var FolderRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($folder->getUuid());
 
@@ -124,7 +124,7 @@ class FolderHook {
      *
      * @throws \Exception
      */
-    public function postClone(Folder $originalFolder, Folder $clonedFolder): void {
+    public function postClone(Folder $originalFolder, Folder $clonedFolder) {
         /** @var FolderRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($originalFolder->getUuid());
 
@@ -147,7 +147,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function suspendSubFolders(string $folderId, bool $suspend = true): void {
+    protected function suspendSubFolders(string $folderId, bool $suspend = true) {
         $folders = $this->folderService->findByParent($folderId);
         foreach($folders as $folder) {
             if($folder->isSuspended() === $suspend) continue;
@@ -168,7 +168,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      * @throws \Exception
      */
-    protected function suspendSubPasswords(string $folderId, bool $suspend = true): void {
+    protected function suspendSubPasswords(string $folderId, bool $suspend = true) {
         $passwords = $this->passwordService->findByFolder($folderId);
         foreach($passwords as $password) {
             if($password->isSuspended() === $suspend) continue;
@@ -187,7 +187,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function hideSubFolders(string $folderUuid): void {
+    protected function hideSubFolders(string $folderUuid) {
         $folders = $this->folderService->findByParent($folderUuid);
         foreach($folders as $folder) {
             $folderRevision = $this->revisionService->findByUuid($folder->getRevision());
@@ -208,7 +208,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function hideSubPasswords(string $folderUuid): void {
+    protected function hideSubPasswords(string $folderUuid) {
         $passwords = $this->passwordService->findByFolder($folderUuid);
         foreach($passwords as $password) {
             /** @var PasswordRevision $passwordRevision */
@@ -231,7 +231,7 @@ class FolderHook {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function checkSuspendedFlag(Folder $folder, FolderRevision $revision): void {
+    protected function checkSuspendedFlag(Folder $folder, FolderRevision $revision) {
         if($folder->isSuspended()) {
             $parent = $this->folderService->findByUuid($revision->getParent());
             if(!$parent->isSuspended()) {

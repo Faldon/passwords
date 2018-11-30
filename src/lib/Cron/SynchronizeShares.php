@@ -103,7 +103,7 @@ class SynchronizeShares extends AbstractCronJob {
      *
      * @throws \Exception
      */
-    protected function runJob($argument): void {
+    protected function runJob($argument) {
         if(!$this->canExecute()) return;
         $this->config->setAppValue(self::EXECUTION_TIMESTAMP, time());
 
@@ -137,7 +137,7 @@ class SynchronizeShares extends AbstractCronJob {
     /**
      * @throws \Exception
      */
-    protected function deleteOrphanedTargetPasswords(): void {
+    protected function deleteOrphanedTargetPasswords() {
         $total = 0;
         do {
             $passwords = $this->passwordService->findOrphanedTargetPasswords();
@@ -159,7 +159,7 @@ class SynchronizeShares extends AbstractCronJob {
     /**
      * @throws \Exception
      */
-    protected function deleteExpiredShares(): void {
+    protected function deleteExpiredShares() {
         $total = 0;
         do {
             $shares = $this->shareService->findExpired();
@@ -182,7 +182,7 @@ class SynchronizeShares extends AbstractCronJob {
     /**
      * @throws \Exception
      */
-    protected function createNewShares(): void {
+    protected function createNewShares() {
         $shares = $this->shareService->findNew();
 
         foreach($shares as $share) {
@@ -275,7 +275,7 @@ class SynchronizeShares extends AbstractCronJob {
     /**
      * @throws \Exception
      */
-    protected function removeSharedAttribute(): void {
+    protected function removeSharedAttribute() {
         $passwords = $this->passwordService->findShared();
         $total     = 0;
 
@@ -297,7 +297,7 @@ class SynchronizeShares extends AbstractCronJob {
      * @throws \Exception
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function updatePasswords(): void {
+    protected function updatePasswords() {
         $total = 0;
         do {
             $count = $this->updateTargetPasswords();
@@ -421,7 +421,7 @@ class SynchronizeShares extends AbstractCronJob {
     /**
      *
      */
-    protected function notifyUsers(): void {
+    protected function notifyUsers() {
         foreach($this->notifications['created'] as $receiver => $owners) {
             try {
                 $this->notificationService->sendShareCreateNotification($receiver, $owners);

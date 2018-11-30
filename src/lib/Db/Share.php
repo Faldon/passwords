@@ -131,7 +131,7 @@ class Share extends AbstractEntity implements EntityInterface {
     /**
      * @param bool $sourceUpdated
      */
-    public function setSourceUpdated(bool $sourceUpdated): void {
+    public function setSourceUpdated(bool $sourceUpdated) {
         $this->sourceUpdated = $sourceUpdated === true;
         $this->markFieldUpdated('sourceUpdated');
     }
@@ -146,7 +146,7 @@ class Share extends AbstractEntity implements EntityInterface {
     /**
      * @param bool $targetUpdated
      */
-    public function setTargetUpdated(bool $targetUpdated): void {
+    public function setTargetUpdated(bool $targetUpdated) {
         $this->targetUpdated = $targetUpdated === true;
         $this->markFieldUpdated('targetUpdated');
     }

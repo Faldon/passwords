@@ -103,7 +103,7 @@ abstract class AbstractService {
      *
      * @throws \Exception
      */
-    public function delete(EntityInterface $entity): void {
+    public function delete(EntityInterface $entity) {
         if(get_class($entity) !== $this->class) throw new \Exception('Invalid revision class given');
         $this->hookManager->emit($this->class, 'preDelete', [$entity]);
         $entity->setDeleted(true);
@@ -116,7 +116,7 @@ abstract class AbstractService {
      *
      * @throws \Exception
      */
-    public function destroy(EntityInterface $entity): void {
+    public function destroy(EntityInterface $entity) {
         if(get_class($entity) !== $this->class) throw new \Exception('Invalid revision class given');
         $this->hookManager->emit($this->class, 'preDestroy', [$entity]);
         if(!$entity->isDeleted()) $this->delete($entity);

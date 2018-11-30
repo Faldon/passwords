@@ -142,7 +142,7 @@ class BackupRestoreCommand extends Command {
      * @param                 $backup
      * @param                 $options
      */
-    protected function printRestoringInformation(OutputInterface $output, string $backup, array $options): void {
+    protected function printRestoringInformation(OutputInterface $output, string $backup, array $options) {
         $output->writeln('This backup file will be used: '.$backup);
         $output->writeln('');
         $output->writeln('The backup will restore the following:');

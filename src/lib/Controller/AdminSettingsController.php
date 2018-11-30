@@ -112,7 +112,7 @@ class AdminSettingsController extends Controller {
     /**
      * @param $enabled
      */
-    protected function setNightlyStatus($enabled): void {
+    protected function setNightlyStatus($enabled) {
         $nightlyApps = $this->config->getSystemValue('allowNightlyUpdates', []);
 
         if($enabled) {

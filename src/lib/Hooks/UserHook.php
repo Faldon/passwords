@@ -36,7 +36,7 @@ class UserHook {
      *
      * @throws \Exception
      */
-    public function preCreateUser(string $user): void {
+    public function preCreateUser(string $user) {
         $deletedUsers = $this->getDeletedUsers();
         if(in_array($user, $deletedUsers)) throw new \InvalidArgumentException("The username {$user} is queued for deletion");
     }
@@ -44,7 +44,7 @@ class UserHook {
     /**
      * @param IUser $user
      */
-    public function postDelete(IUser $user): void {
+    public function postDelete(IUser $user) {
         $deletedUsers   = $this->getDeletedUsers();
         $deletedUsers[] = $user->getUID();
         $deletedUsers   = array_unique($deletedUsers);

@@ -110,7 +110,7 @@ class PageController extends Controller {
     /**
      *
      */
-    protected function getUserSettings(): void {
+    protected function getUserSettings() {
         Util::addHeader(
             'meta',
             [

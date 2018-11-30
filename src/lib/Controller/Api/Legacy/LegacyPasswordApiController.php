@@ -357,7 +357,7 @@ class LegacyPasswordApiController extends ApiController {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function updatePasswordCategory($category, Password $model, PasswordRevision $revision): void {
+    protected function updatePasswordCategory($category, Password $model, PasswordRevision $revision) {
         if($category) {
             /** @var Tag $tag */
             $tag = $this->tagService->findByIdOrUuid($category);

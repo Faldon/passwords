@@ -7,6 +7,7 @@
 
 namespace OCA\Passwords\Helper\Token;
 
+use OC\Authentication\Exceptions\InvalidTokenException;
 use OC\Authentication\Token\IProvider;
 use OC\Authentication\Token\IToken;
 use OCA\Passwords\Encryption\SimpleEncryption;
@@ -16,6 +17,7 @@ use OCA\Passwords\Services\LoggingService;
 use OCA\Passwords\Services\NotificationService;
 use OCP\IL10N;
 use OCP\ISession;
+use OCP\IUserManager;
 use OCP\Security\ISecureRandom;
 
 /**
@@ -143,7 +145,7 @@ class TokenHelper {
     /**
      * @param string $tokenId
      */
-    public function destroyToken(string $tokenId): void {
+    public function destroyToken(string $tokenId) {
         $this->tokenProvider->invalidateTokenById(
             $this->userId,
             $tokenId
@@ -153,7 +155,7 @@ class TokenHelper {
     /**
      * @throws \Exception
      */
-    protected function destroyLegacyToken(): void {
+    protected function destroyLegacyToken() {
         $tokenId = $this->config->getUserValue(self::WEBUI_TOKEN_ID, false);
         if($tokenId !== false) {
             $this->config->deleteUserValue(self::WEBUI_TOKEN);
@@ -165,7 +167,7 @@ class TokenHelper {
     /**
      *
      */
-    public function destroyWebUiToken(): void {
+    public function destroyWebUiToken() {
         $tokenId = $this->session->get(self::WEBUI_TOKEN_ID);
         if(!empty($tokenId)) {
             $this->destroyToken($tokenId);
@@ -216,7 +218,7 @@ class TokenHelper {
     /**
      * @return null|string
      */
-    protected function getUserPassword(): ?string {
+    protected function getUserPassword(): string {
         try {
             $sessionId    = $this->session->getId();
             $sessionToken = $this->tokenProvider->getToken($sessionId);

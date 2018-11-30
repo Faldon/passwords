@@ -128,7 +128,7 @@ class CreatePasswordShareHelper {
      *
      * @throws ApiException
      */
-    protected function checkType(string $type): void {
+    protected function checkType(string $type) {
         if($type !== 'user') throw new ApiException('Invalid share type', 400);
     }
 
@@ -157,7 +157,7 @@ class CreatePasswordShareHelper {
      * @throws ApiException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    protected function checkIfAlreadyShared(string $receiver, Password $model): void {
+    protected function checkIfAlreadyShared(string $receiver, Password $model) {
         try {
             $shares = $this->modelService->findBySourcePasswordAndReceiver($model->getUuid(), $receiver);
             if($shares !== null) throw new ApiException('Entity already shared with user', 400);
@@ -170,7 +170,7 @@ class CreatePasswordShareHelper {
      *
      * @throws ApiException
      */
-    protected function checkIfRevisionCanBeShared(PasswordRevision $revision): void {
+    protected function checkIfRevisionCanBeShared(PasswordRevision $revision) {
         if($revision->getCseType() !== EncryptionService::CSE_ENCRYPTION_NONE) throw new ApiException('CSE type does not support sharing', 420);
         if($revision->isHidden()) throw new ApiException('Shared entity can not be hidden', 420);
     }
@@ -181,7 +181,7 @@ class CreatePasswordShareHelper {
      *
      * @throws \Exception
      */
-    protected function downgradeSSE(PasswordRevision $revision, Password $model): void {
+    protected function downgradeSSE(PasswordRevision $revision, Password $model) {
         /** @var PasswordRevision $newRevision */
         $newRevision = $this->passwordRevisionService->clone(
             $revision,
@@ -194,7 +194,7 @@ class CreatePasswordShareHelper {
     /**
      * @param $model
      */
-    protected function setHasSharesFlag(Password $model): void {
+    protected function setHasSharesFlag(Password $model) {
         if(!$model->hasShares()) {
             $model->setHasShares(true);
             $this->passwordModelService->save($model);

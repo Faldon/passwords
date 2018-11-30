@@ -46,7 +46,7 @@ interface EntityInterface {
      * @param string $property
      * @param        $value
      */
-    public function setProperty(string $property, $value): void;
+    public function setProperty(string $property, $value);
 
     /**
      * @param string $property

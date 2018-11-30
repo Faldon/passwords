@@ -52,7 +52,7 @@ abstract class AbstractCronJob extends TimedJob {
      *
      * @throws \Exception
      */
-    protected function run($argument): void {
+    protected function run($argument) {
         if(!$this->environment->isCronJob()) {
             $this->logger->error(get_class($this).' must be executed as cron job');
 
@@ -67,5 +67,5 @@ abstract class AbstractCronJob extends TimedJob {
      *
      * @throws \Exception
      */
-    abstract protected function runJob($argument): void;
+    abstract protected function runJob($argument);
 }

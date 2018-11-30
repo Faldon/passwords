@@ -71,7 +71,7 @@ class BigDbPlusHibpSecurityCheckHelper extends AbstractSecurityCheckHelper {
      * @return void
      * @throws \Throwable
      */
-    function updateDb(): void {
+    function updateDb() {
         $this->localSecurityCheck->updateDb();
         $this->config->setAppValue(self::CONFIG_DB_TYPE, static::PASSWORD_DB);
     }
