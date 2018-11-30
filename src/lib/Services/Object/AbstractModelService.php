@@ -69,7 +69,7 @@ abstract class AbstractModelService extends AbstractService {
      * @deprecated
      * @throws \Exception
      */
-    public function findByIdOrUuid($search): ?ModelInterface {
+    public function findByIdOrUuid($search) {
         return $this->mapper->findOneMatching(
             [
                 ['id', $search, '=', 'OR'],

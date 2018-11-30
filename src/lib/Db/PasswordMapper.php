@@ -29,7 +29,7 @@ class PasswordMapper extends AbstractMapper {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function findPasswordByShare(string $shareUuid, bool $source = true): ?Password {
+    public function findPasswordByShare(string $shareUuid, bool $source = true) {
         $passwordTable = '`*PREFIX*'.PasswordMapper::TABLE_NAME.'`';
         $shareTable    = '`*PREFIX*'.ShareMapper::TABLE_NAME.'`';
         $mapField      = $source ? 'source_password':'target_password';

@@ -86,7 +86,7 @@ class FolderObjectHelper extends AbstractObjectHelper {
         EntityInterface $folder,
         string $level = self::LEVEL_MODEL,
         $filter = []
-    ): ?array {
+    ) {
         /** @var FolderRevision $revision */
         $revision = $this->getRevision($folder, $filter);
         if($revision === null) return null;

@@ -128,7 +128,7 @@ class LegacyDatabaseMigration implements /*IMigrationStep,*/ IRepairStep {
      * @return null|ISchemaWrapper
      * @since 13.0.0
      */
-    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options): ?ISchemaWrapper {
+    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
         return null;
     }
 }

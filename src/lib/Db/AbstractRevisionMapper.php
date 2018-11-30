@@ -28,7 +28,7 @@ abstract class AbstractRevisionMapper extends AbstractMapper {
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function findCurrentRevisionByModel(string $passwordUuid): ?RevisionInterface {
+    public function findCurrentRevisionByModel(string $passwordUuid) {
         $revisionTable = '`*PREFIX*'.static::TABLE_NAME.'`';
         $passwordTable = '`*PREFIX*'.static::MODEL_TABLE_NAME.'`';
 

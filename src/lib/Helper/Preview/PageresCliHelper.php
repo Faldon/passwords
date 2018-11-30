@@ -78,7 +78,7 @@ class PageresCliHelper extends AbstractPreviewHelper {
     /**
      * @return null|string
      */
-    public static function getPageresPath(): ?string {
+    public static function getPageresPath() {
 
         $serverPath = @exec('which pageres');
         if(!empty($serverPath) && is_readable($serverPath)) return $serverPath;

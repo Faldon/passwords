@@ -94,7 +94,7 @@ class EnvironmentService {
     /**
      * @return null|string
      */
-    public function getUserId(): ?string {
+    public function getUserId() {
         return $this->userId;
     }
 

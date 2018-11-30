@@ -116,7 +116,7 @@ class WebsitePreviewService {
      * @return null|ISimpleFile
      * @throws \Exception
      */
-    protected function getWebsitePreview(string $domain, string $view, string $fileName, int $minWidth, int $minHeight, int $maxWidth, int $maxHeight): ?ISimpleFile {
+    protected function getWebsitePreview(string $domain, string $view, string $fileName, int $minWidth, int $minHeight, int $maxWidth, int $maxHeight) {
         if(!$this->validationService->isValidDomain($domain)) {
             $websitePreview = $this->previewService->getDefaultPreview('default');
         } else {
@@ -136,7 +136,7 @@ class WebsitePreviewService {
      * @return null|ISimpleFile
      * @throws ApiException
      */
-    protected function getDefaultPreview(string $domain, int $minWidth, int $minHeight, int $maxWidth, int $maxHeight): ?ISimpleFile {
+    protected function getDefaultPreview(string $domain, int $minWidth, int $minHeight, int $maxWidth, int $maxHeight) {
         try {
             $websitePreview = $this->previewService->getDefaultPreview($domain);
 
@@ -167,7 +167,7 @@ class WebsitePreviewService {
         int $minHeight,
         int $maxWidth,
         int $maxHeight
-    ): ?ISimpleFile {
+    ) {
 
         $image     = $this->imageService->getImageFromBlob($preview->getContent());
         $image     = $this->imageService->advancedResizeImage($image, $minWidth, $minHeight, $maxWidth, $maxHeight);

@@ -195,7 +195,7 @@ class FileCacheService {
      *
      * @return ISimpleFile
      */
-    public function getFile(string $file, string $cache = null): ?ISimpleFile {
+    public function getFile(string $file, string $cache = null) {
         try {
             $cache = $this->validateCacheName($cache);
             $cache = $this->getCache($cache);
@@ -217,7 +217,7 @@ class FileCacheService {
      *
      * @return ISimpleFile|null
      */
-    public function putFile(string $file, string $content, string $cache = null): ?ISimpleFile {
+    public function putFile(string $file, string $content, string $cache = null) {
         try {
             $cache = $this->validateCacheName($cache);
             $cache = $this->getCache($cache);
