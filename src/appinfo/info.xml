@@ -80,7 +80,7 @@ Sie können auch einzelne Passwörter mit anderen Nutzern teilen.
         <![CDATA[https://raw.githubusercontent.com/wiki/marius-wieschollek/passwords/Users/_files/handbook-section.png]]>
     </screenshot>
     <dependencies>
-        <php min-version="7.1" />
+        <php min-version="7.0" />
         <database>sqlite</database>
         <database>mysql</database>
         <database>pgsql</database>
