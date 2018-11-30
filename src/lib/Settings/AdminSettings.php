@@ -339,7 +339,7 @@ class AdminSettings implements ISettings {
             $this->config->getAppValue('service/favicon') === HelperService::FAVICON_BESTICON &&
             $this->config->getAppValue(BestIconHelper::BESTICON_CONFIG_KEY, BestIconHelper::BESTICON_DEFAULT_URL) === BestIconHelper::BESTICON_DEFAULT_URL
         ) {
-            $info[ $this->fileCacheService::FAVICON_CACHE ]['clearable'] = false;
+            $info[ FileCacheService::FAVICON_CACHE ]['clearable'] = false;
         }
 
         return $info;
