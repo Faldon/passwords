@@ -80,7 +80,7 @@ class ConfigurationService {
      *
      * @throws \Exception
      */
-    public function setUserValue(string $key, string $value, ?string $user = null) {
+    public function setUserValue(string $key, string $value, $user = null) {
         $userId = $this->getUserId($user);
         $this->config->setUserValue($userId, Application::APP_NAME, $key, $value);
     }
@@ -107,7 +107,7 @@ class ConfigurationService {
      *
      * @throws \Exception
      */
-    public function deleteUserValue(string $key, ?string $user = null) {
+    public function deleteUserValue(string $key, $user = null) {
         $userId = $this->getUserId($user);
         $this->config->deleteUserValue($userId, Application::APP_NAME, $key);
     }

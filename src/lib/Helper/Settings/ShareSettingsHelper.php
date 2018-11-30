@@ -39,7 +39,7 @@ class ShareSettingsHelper {
      * @param IManager             $shareManager
      * @param ConfigurationService $config
      */
-    public function __construct(?string $userId, IManager $shareManager, ConfigurationService $config) {
+    public function __construct($userId, IManager $shareManager, ConfigurationService $config) {
         $this->config       = $config;
         $this->userId       = $userId;
         $this->shareManager = $shareManager;
