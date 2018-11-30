@@ -99,7 +99,7 @@ class AdminSettingsController extends Controller {
         $this->fileCacheService->clearCache($key);
 
         if(
-            $this->fileCacheService::FAVICON_CACHE == $key &&
+            FileCacheService::FAVICON_CACHE == $key &&
             $this->config->getAppValue('service/favicon') === HelperService::FAVICON_BESTICON &&
             $this->config->getAppValue(BestIconHelper::BESTICON_CONFIG_KEY, BestIconHelper::BESTICON_DEFAULT_URL) === BestIconHelper::BESTICON_DEFAULT_URL
         ) {
