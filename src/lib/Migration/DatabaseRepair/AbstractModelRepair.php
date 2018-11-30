@@ -52,7 +52,7 @@ abstract class AbstractModelRepair {
      *
      * @throws \Exception
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         /** @var ModelInterface[] $allModels */
         $allModels = $this->modelService->findAll();
 

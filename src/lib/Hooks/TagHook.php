@@ -62,7 +62,7 @@ class TagHook {
      * @throws \Exception
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
      */
-    public function preSetRevision(Tag $tag, TagRevision $newRevision): void {
+    public function preSetRevision(Tag $tag, TagRevision $newRevision) {
         if($tag->getRevision() === null) return;
         /** @var TagRevision $oldRevision */
         $oldRevision = $this->revisionService->findByUuid($tag->getRevision());
@@ -84,7 +84,7 @@ class TagHook {
      *
      * @throws \Exception
      */
-    public function preDelete(Tag $tag): void {
+    public function preDelete(Tag $tag) {
         $relations = $this->relationService->findByTag($tag->getUuid());
 
         foreach($relations as $relation) {
@@ -97,7 +97,7 @@ class TagHook {
      *
      * @throws \Exception
      */
-    public function postDelete(Tag $tag): void {
+    public function postDelete(Tag $tag) {
         /** @var TagRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($tag->getUuid());
 
@@ -112,7 +112,7 @@ class TagHook {
      *
      * @throws \Exception
      */
-    public function postClone(Tag $originalTag, Tag $clonedTag): void {
+    public function postClone(Tag $originalTag, Tag $clonedTag) {
         /** @var TagRevision[] $revisions */
         $revisions = $this->revisionService->findByModel($originalTag->getUuid());
 

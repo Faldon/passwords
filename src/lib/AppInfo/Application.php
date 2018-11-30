@@ -63,7 +63,7 @@ class Application extends App {
 
     /**
      */
-    protected function registerDiClasses(): void {
+    protected function registerDiClasses() {
         $container = $this->getContainer();
 
         $this->registerCompatibilityClasses();
@@ -98,7 +98,7 @@ class Application extends App {
     /**
      *
      */
-    protected function registerMiddleware(): void {
+    protected function registerMiddleware() {
         $container = $this->getContainer();
 
         $container->registerAlias('ApiSecurityMiddleware', ApiSecurityMiddleware::class);
@@ -113,7 +113,7 @@ class Application extends App {
     /**
      *
      */
-    protected function registerController(): void {
+    protected function registerController() {
         $container = $this->getContainer();
 
         $container->registerAlias('AdminSettingsController', AdminSettingsController::class);
@@ -140,7 +140,7 @@ class Application extends App {
     /**
      *
      */
-    protected function registerLegacyApiControllers(): void {
+    protected function registerLegacyApiControllers() {
         $container = $this->getContainer();
 
         if($container->getServer()->getConfig()->getAppValue(Application::APP_NAME, 'legacy_api_enabled', true)) {
@@ -153,7 +153,7 @@ class Application extends App {
     /**
      * @throws \OCP\AppFramework\QueryException
      */
-    protected function registerInternalHooks(): void {
+    protected function registerInternalHooks() {
         $container = $this->getContainer();
         /** @var HookManager $hookManager */
         $hookManager = $container->query(HookManager::class);
@@ -176,7 +176,7 @@ class Application extends App {
     /**
      * @throws \OCP\AppFramework\QueryException
      */
-    protected function registerSystemHooks(): void {
+    protected function registerSystemHooks() {
         $container = $this->getContainer();
         /** @var HookManager $hookManager */
         $hookManager = $container->query(HookManager::class);
@@ -214,7 +214,7 @@ class Application extends App {
     /**
      *
      */
-    protected function registerNotificationNotifier(): void {
+    protected function registerNotificationNotifier() {
         $this->getContainer()->getServer()->getNotificationManager()->registerNotifier(
             function () {
                 return $this->getContainer()->query(NotificationService::class);

@@ -135,7 +135,7 @@ class ProcessDeletedEntities extends AbstractCronJob {
     /**
      * @param $argument
      */
-    protected function runJob($argument): void {
+    protected function runJob($argument) {
         $timeout = $this->config->getAppValue('entity/purge/timeout', -1);
         if($timeout > 0) $this->time = time() - $timeout;
 

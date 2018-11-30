@@ -155,7 +155,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
     /**
      *
      */
-    protected function checkRequestTimeout(): void {
+    protected function checkRequestTimeout() {
         $lastRequest = $this->config->getAppValue('security/fg/api/request', 0);
         if(time() - $lastRequest < self::API_WAIT_TIME) {
             sleep(self::API_WAIT_TIME);
@@ -165,7 +165,7 @@ class FaviconGrabberHelper extends AbstractFaviconHelper {
     /**
      *
      */
-    protected function setLastRequestTime(): void {
+    protected function setLastRequestTime() {
         $this->config->setAppValue('security/fg/api/request', time());
     }
 }

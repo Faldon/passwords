@@ -109,7 +109,7 @@ class FolderService extends AbstractModelService {
      *
      * @throws \Exception
      */
-    public function delete(EntityInterface $model): void {
+    public function delete(EntityInterface $model) {
         if($model->getUuid() === self::BASE_FOLDER_UUID) return;
 
         parent::delete($model);
@@ -121,7 +121,7 @@ class FolderService extends AbstractModelService {
      *
      * @throws \Exception
      */
-    public function setRevision(ModelInterface $model, RevisionInterface $revision): void {
+    public function setRevision(ModelInterface $model, RevisionInterface $revision) {
         if($model->getUuid() === self::BASE_FOLDER_UUID) return;
 
         parent::setRevision($model, $revision);

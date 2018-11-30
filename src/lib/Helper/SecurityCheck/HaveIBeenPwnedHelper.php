@@ -41,7 +41,7 @@ class HaveIBeenPwnedHelper extends AbstractSecurityCheckHelper {
     /**
      * @inheritdoc
      */
-    public function updateDb(): void {
+    public function updateDb() {
         $this->fileCacheService->clearCache();
     }
 
@@ -79,7 +79,7 @@ class HaveIBeenPwnedHelper extends AbstractSecurityCheckHelper {
      * @param string $hash
      * @param array  $hashes
      */
-    protected function addHashToLocalDb(string $hash, array $hashes): void {
+    protected function addHashToLocalDb(string $hash, array $hashes) {
         $data = $this->readPasswordsFile($hash);
         $data = array_merge($data, $hashes);
         $this->writePasswordsFile($hash, $data);

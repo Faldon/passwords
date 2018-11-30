@@ -100,7 +100,7 @@ class NightlyAppFetcher extends Fetcher {
     /**
      *
      */
-    public function clearDb(): void {
+    public function clearDb() {
         try {
             $rootFolder = $this->appData->getFolder('/');
             $file       = $rootFolder->getFile($this->fileName);
@@ -214,7 +214,7 @@ class NightlyAppFetcher extends Fetcher {
     /**
      * @param $eTag
      */
-    protected function updateAppDbAfterUpdate($eTag): void {
+    protected function updateAppDbAfterUpdate($eTag) {
         try {
             $rootFolder = $this->appData->getFolder('/');
 

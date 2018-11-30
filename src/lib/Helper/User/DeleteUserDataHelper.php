@@ -105,7 +105,7 @@ class DeleteUserDataHelper {
      *
      * @throws \Exception
      */
-    public function deleteUserData(string $userId): void {
+    public function deleteUserData(string $userId) {
         if($this->userId !== null && $this->userId != $userId) throw new \Exception('Invalid user id '.$userId);
 
         $this->deleteObjects($this->tagService, $userId);
@@ -122,7 +122,7 @@ class DeleteUserDataHelper {
      *
      * @throws \Exception
      */
-    protected function deleteObjects(AbstractService $service, string $userId): void {
+    protected function deleteObjects(AbstractService $service, string $userId) {
         /** @var EntityInterface $objects */
         $objects = $service->findByUserId($userId);
 
@@ -136,7 +136,7 @@ class DeleteUserDataHelper {
      *
      * @throws \Exception
      */
-    protected function deleteUserSettings(string $userId): void {
+    protected function deleteUserSettings(string $userId) {
         $settings = array_keys($this->settings->list($userId));
 
         foreach($settings as $setting) {
@@ -149,7 +149,7 @@ class DeleteUserDataHelper {
      *
      * @throws \Exception
      */
-    protected function deleteUserConfig(string $userId): void {
+    protected function deleteUserConfig(string $userId) {
         foreach($this->userConfigKeys as $key) {
             $this->config->deleteUserValue($key, $userId);
         }

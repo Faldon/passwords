@@ -47,7 +47,7 @@ abstract class AbstractRevisionRepair {
      *
      * @throws \Exception
      */
-    public function run(IOutput $output): void {
+    public function run(IOutput $output) {
         /** @var RevisionInterface[] $allRevisions */
         $allRevisions = $this->revisionService->findAll(false);
 

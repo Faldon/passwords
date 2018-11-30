@@ -80,7 +80,7 @@ class ConfigurationService {
      *
      * @throws \Exception
      */
-    public function setUserValue(string $key, string $value, ?string $user = null): void {
+    public function setUserValue(string $key, string $value, ?string $user = null) {
         $userId = $this->getUserId($user);
         $this->config->setUserValue($userId, Application::APP_NAME, $key, $value);
     }
@@ -89,7 +89,7 @@ class ConfigurationService {
      * @param string $key
      * @param        $value
      */
-    public function setAppValue(string $key, string $value): void {
+    public function setAppValue(string $key, string $value) {
         $this->config->setAppValue(Application::APP_NAME, $key, $value);
     }
 
@@ -97,7 +97,7 @@ class ConfigurationService {
      * @param string $key
      * @param        $value
      */
-    public function setSystemValue(string $key, $value): void {
+    public function setSystemValue(string $key, $value) {
         $this->config->setSystemValue($key, $value);
     }
 
@@ -107,7 +107,7 @@ class ConfigurationService {
      *
      * @throws \Exception
      */
-    public function deleteUserValue(string $key, ?string $user = null): void {
+    public function deleteUserValue(string $key, ?string $user = null) {
         $userId = $this->getUserId($user);
         $this->config->deleteUserValue($userId, Application::APP_NAME, $key);
     }
@@ -115,14 +115,14 @@ class ConfigurationService {
     /**
      * @param string $key
      */
-    public function deleteAppValue(string $key): void {
+    public function deleteAppValue(string $key) {
         $this->config->deleteAppValue(Application::APP_NAME, $key);
     }
 
     /**
      * @param string $key
      */
-    public function deleteSystemValue(string $key): void {
+    public function deleteSystemValue(string $key) {
         $this->config->deleteSystemValue($key);
     }
 

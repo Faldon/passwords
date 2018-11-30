@@ -160,7 +160,7 @@ abstract class AbstractSecurityCheckHelper {
      * @param string $hash
      * @param array  $hashes
      */
-    protected function writePasswordsFile(string $hash, array $hashes): void {
+    protected function writePasswordsFile(string $hash, array $hashes) {
         $file = $this->getPasswordsFileName($hash);
 
         $data = json_encode(array_unique($hashes));
@@ -185,5 +185,5 @@ abstract class AbstractSecurityCheckHelper {
      *
      * @return void
      */
-    abstract function updateDb(): void;
+    abstract function updateDb();
 }

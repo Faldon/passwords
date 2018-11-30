@@ -328,7 +328,7 @@ class ShareApiController extends AbstractApiController {
     /**
      * @throws ApiException
      */
-    protected function checkAccessPermissions(): void {
+    protected function checkAccessPermissions() {
         if(!$this->shareSettings->get('enabled')) throw new ApiException('Sharing disabled', 403);
     }
 }

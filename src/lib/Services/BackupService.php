@@ -118,7 +118,7 @@ class BackupService {
     /**
      * @throws \OCP\Files\NotPermittedException
      */
-    protected function removeOldBackups(): void {
+    protected function removeOldBackups() {
         $maxBackups = $this->config->getAppValue('backup/files/maximum', 14);
         if($maxBackups === 0) return;
 

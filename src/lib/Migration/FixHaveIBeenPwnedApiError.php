@@ -96,7 +96,7 @@ class FixHaveIBeenPwnedApiError implements IRepairStep {
      *
      * @throws \Exception
      */
-    protected function resetPasswordSecurityStatus(IOutput $output): void {
+    protected function resetPasswordSecurityStatus(IOutput $output) {
         /** @var PasswordRevision[] $revisions */
         $revisions = $this->revisionMapper->findAllMatching(['status', 2]);
 

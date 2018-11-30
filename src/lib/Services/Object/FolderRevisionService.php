@@ -161,7 +161,7 @@ class FolderRevisionService extends AbstractRevisionService {
      *
      * @throws \Exception
      */
-    public function delete(EntityInterface $entity): void {
+    public function delete(EntityInterface $entity) {
         if($entity->getUuid() === self::BASE_REVISION_UUID) return;
 
         parent::delete($entity);

@@ -36,7 +36,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
      * @inheritdoc
      * @throws Throwable
      */
-    public function updateDb(): void {
+    public function updateDb() {
         ini_set('memory_limit', -1);
         $txtFile = $this->config->getTempDir().uniqid().'.txt';
 
@@ -57,7 +57,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
      * @throws Exception
      * @throws Throwable
      */
-    protected function downloadPasswordsFile(string $txtFile): void {
+    protected function downloadPasswordsFile(string $txtFile) {
         $zipFile = $this->config->getTempDir().uniqid().'.zip';
 
         $request = new FileDownloadHelper();
@@ -77,7 +77,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
      *
      * @throws Throwable
      */
-    protected function unpackPasswordsFile(string $zipFile, string $txtFile): void {
+    protected function unpackPasswordsFile(string $zipFile, string $txtFile) {
         try {
             $zip = new ZipArchive;
             if($zip->open($zipFile) === true) {
@@ -102,7 +102,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
      *
      * @param string $txtFile
      */
-    protected function lowMemoryHashAlgorithm(string $txtFile): void {
+    protected function lowMemoryHashAlgorithm(string $txtFile) {
         $null = null;
         for($i = 0; $i < 16; $i++) {
             $hexKey = dechex($i);
@@ -137,7 +137,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
      *
      * @param string $txtFile
      */
-    protected function highMemoryHashAlgorithm(string $txtFile): void {
+    protected function highMemoryHashAlgorithm(string $txtFile) {
         $null   = null;
         $hashes = [];
         $file   = fopen($txtFile, 'r');
@@ -163,7 +163,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
     /**
      * @param array $hashes
      */
-    protected function storeHashes(array $hashes): void {
+    protected function storeHashes(array $hashes) {
         foreach($hashes as $key => $data) {
             $this->writePasswordsFile($key, array_keys($data));
         }
@@ -183,7 +183,7 @@ class BigLocalDbSecurityCheckHelper extends AbstractSecurityCheckHelper {
     /**
      *
      */
-    protected function logPasswordUpdate(): void {
+    protected function logPasswordUpdate() {
         $ram = round(memory_get_peak_usage(true) / 1024 / 1024, 2);
         $this->logger->info(["Updated local password db. DB: %s, RAM: %s MiB", static::PASSWORD_DB, $ram]);
     }

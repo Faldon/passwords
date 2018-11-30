@@ -83,7 +83,7 @@ class CheckPasswordsJob extends AbstractCronJob {
      *
      * @throws \Exception
      */
-    protected function runJob($argument): void {
+    protected function runJob($argument) {
         $securityHelper = $this->helperService->getSecurityHelper();
 
         if($securityHelper->dbUpdateRequired()) $securityHelper->updateDb();
@@ -95,7 +95,7 @@ class CheckPasswordsJob extends AbstractCronJob {
      *
      * @throws \Exception
      */
-    protected function checkRevisionStatus(AbstractSecurityCheckHelper $securityHelper): void {
+    protected function checkRevisionStatus(AbstractSecurityCheckHelper $securityHelper) {
         /** @var PasswordRevision[] $revisions */
         $revisions = $this->revisionMapper->findAllMatching(['status', 2, '!=']);
 
@@ -124,7 +124,7 @@ class CheckPasswordsJob extends AbstractCronJob {
     /**
      * @param PasswordRevision $revision
      */
-    protected function sendBadPasswordNotification(PasswordRevision $revision): void {
+    protected function sendBadPasswordNotification(PasswordRevision $revision) {
         try {
             $current = $this->revisionMapper->findCurrentRevisionByModel($revision->getModel());
             if($current->getUuid() === $revision->getUuid()) {
@@ -143,7 +143,7 @@ class CheckPasswordsJob extends AbstractCronJob {
     /**
      *
      */
-    protected function notifyUsers(): void {
+    protected function notifyUsers() {
         foreach($this->badPasswords as $user => $count) {
             try {
                 $this->notificationService->sendBadPasswordNotification($user, $count);
