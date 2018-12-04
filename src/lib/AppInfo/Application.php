@@ -190,7 +190,7 @@ class Application extends App {
     /**
      * @TODO Remove in 2019.1.0
      */
-    protected function registerCompatibilityClasses(): void {
+    protected function registerCompatibilityClasses() {
         $version = \OC::$server->getConfig()->getSystemValue('version');
         $version = intval(explode('.', $version, 2)[0]);
 
