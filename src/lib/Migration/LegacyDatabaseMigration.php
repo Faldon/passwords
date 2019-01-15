@@ -74,12 +74,12 @@ class LegacyDatabaseMigration implements IRepairStep {
         $version = $this->configurationService->getAppValue('installed_version');
 
         if(version_compare($version, '2018.0.0') < 0) {
-            if(PHP_VERSION_ID < 702000) {
+            if(PHP_VERSION_ID < 700000) {
                 $tags   = $this->categoryMigration->migrateCategories($output);
                 $shares = $this->passwordMigration->migratePasswords($output, $tags);
                 $this->shareMigration->migratePasswords($output, $shares);
             } else {
-                $output->info('Your PHP version is not supported by the migration. Use PHP 7.1.xx');
+                $output->info('Your PHP version is not supported by the migration. Use PHP 7.0.xx');
             }
         } else {
             $output->info('Legacy migration not available for version '.$version);
